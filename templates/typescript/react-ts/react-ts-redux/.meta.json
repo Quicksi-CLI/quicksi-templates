@@ -1,0 +1,6 @@
+{
+  "name": "node-js-babel",
+  "description": "Node.js authentication API with JWT",
+  "tags": ["auth", "jwt", "node", "api"],
+  "keywords": ["login", "signup", "authentication"]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "angular-js-webpack",
+  "description": "Angular JS webpack that is description here",
+  "tags": [
+    "auth",
+    "jwt",
+    "node",
+    "api"
+  ],
+  "keywords": [
+    "login",
+    "signup",
+    "authentication"
+  ],
+  "author": {
+    "Full Name": "Samson",
+    "username": "anayooleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
+}
