@@ -1,4 +1,5 @@
 {
+  "id": "angular-js-webpack",
   "name": "angular-js-webpack",
   "description": "Angular JS webpack that is description here",
   "tags": [
@@ -13,8 +14,7 @@
     "authentication"
   ],
   "author": {
-    "Full Name": "Samson",
-    "username": "anayooleru",
+    "name": "Samson",
     "github_username": "anayo-samson",
     "avatar": "https://github.com/anayo-samson.png"
   }
