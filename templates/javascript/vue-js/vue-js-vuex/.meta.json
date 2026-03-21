@@ -1,6 +1,31 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "vue-vuex-starter",
+  "name": "Vue Vuex Starter",
+  "description": "A Vue.js starter template with Vuex configured for state management, providing a simple and scalable foundation for building modern frontend applications.",
+  "features": [
+    "Vue.js application setup",
+    "Vuex configured for state management",
+    "Basic store structure with sample modules",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "vue",
+    "vuex",
+    "frontend",
+    "state-management"
+  ],
+  "keywords": [
+    "vue",
+    "vuex",
+    "frontend",
+    "state",
+    "starter",
+    "boilerplate",
+    "javascript"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

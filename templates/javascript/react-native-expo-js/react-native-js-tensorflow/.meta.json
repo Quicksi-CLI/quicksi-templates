@@ -1,6 +1,36 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-native-tensorflowjs-starter",
+  "name": "React Native TensorFlow.js Starter",
+  "description": "A React Native starter template using Expo and TensorFlow.js, featuring MobileNet integration for building mobile applications with on-device machine learning capabilities.",
+  "features": [
+    "React Native setup using Expo",
+    "TensorFlow.js integration for machine learning",
+    "Pretrained MobileNet model support",
+    "JavaScript-based mobile development",
+    "Prettier configured for code formatting",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "react-native",
+    "tensorflow",
+    "machine-learning",
+    "expo",
+    "mobile"
+  ],
+  "keywords": [
+    "react-native",
+    "tensorflowjs",
+    "machine-learning",
+    "mobilenet",
+    "expo",
+    "mobile",
+    "ai",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

@@ -1,6 +1,37 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-webpack-starter",
+  "name": "React Webpack Starter",
+  "description": "A React starter template with a fully configured Webpack setup for both development and production, offering more flexibility than Create React App along with modern tooling and code quality integrations.",
+  "features": [
+    "React setup with custom Webpack configuration",
+    "Webpack configured for development and production builds",
+    "Babel transpilation for modern JavaScript (ES6+) support",
+    "Linting with ESLint and formatting with Prettier",
+    "Code coverage and reporting with Code Climate and Travis CI",
+    "Sass (node-sass) support for styling",
+    "Toast notifications using React Toastify",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "react",
+    "webpack",
+    "babel",
+    "frontend",
+    "sass"
+  ],
+  "keywords": [
+    "react",
+    "webpack",
+    "babel",
+    "sass",
+    "frontend",
+    "starter",
+    "boilerplate",
+    "custom-webpack"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

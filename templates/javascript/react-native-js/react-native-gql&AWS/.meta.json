@@ -1,6 +1,38 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-native-graphql-aws-appsync-starter",
+  "name": "React Native GraphQL AWS AppSync Starter",
+  "description": "A React Native starter template with GraphQL powered by AWS AppSync and DynamoDB, designed for building scalable cross-platform mobile applications with real-time capabilities.",
+  "features": [
+    "React Native CLI setup for mobile development",
+    "Cross-platform support for Android and iOS",
+    "GraphQL API powered by AWS AppSync",
+    "Amazon DynamoDB integration for data storage",
+    "JavaScript-based mobile application architecture",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "react-native",
+    "graphql",
+    "aws",
+    "appsync",
+    "dynamodb",
+    "mobile"
+  ],
+  "keywords": [
+    "react-native",
+    "graphql",
+    "aws",
+    "appsync",
+    "dynamodb",
+    "mobile",
+    "android",
+    "ios",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

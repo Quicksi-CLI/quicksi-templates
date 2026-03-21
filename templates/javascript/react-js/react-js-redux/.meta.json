@@ -1,6 +1,31 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-redux-starter",
+  "name": "React Redux Starter",
+  "description": "A React starter template built with Create React App, featuring Redux for state management and a preconfigured project structure to accelerate frontend development.",
+  "features": [
+    "React application bootstrapped with Create React App",
+    "Redux configured for state management",
+    "Sample Redux store and reducers included",
+    "Basic project structure for scalability"
+  ],
+  "tags": [
+    "react",
+    "redux",
+    "frontend",
+    "state-management"
+  ],
+  "keywords": [
+    "react",
+    "redux",
+    "frontend",
+    "state",
+    "starter",
+    "boilerplate",
+    "javascript"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

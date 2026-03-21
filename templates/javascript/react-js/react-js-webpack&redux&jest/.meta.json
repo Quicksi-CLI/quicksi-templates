@@ -1,6 +1,46 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-webpack-redux-jest-starter",
+  "name": "React Webpack Redux Jest Starter",
+  "description": "A React starter template with a custom Webpack setup, Redux for state management, and integrated testing using Jest and Enzyme, along with modern tooling for scalable frontend development.",
+  "features": [
+    "React setup with custom Webpack configuration",
+    "Webpack configured for development and production builds",
+    "Babel transpilation for modern JavaScript (ES6+) support",
+    "Linting with ESLint and formatting with Prettier",
+    "Code coverage and reporting with Code Climate and Travis CI",
+    "Redux configured for state management",
+    "Sample Redux actions and reducers included",
+    "Sass (node-sass) support for styling",
+    "Toast notifications using React Toastify",
+    "Jest configured for testing",
+    "Enzyme setup for component testing",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "react",
+    "webpack",
+    "redux",
+    "jest",
+    "enzyme",
+    "frontend",
+    "testing",
+    "state-management"
+  ],
+  "keywords": [
+    "react",
+    "redux",
+    "webpack",
+    "jest",
+    "enzyme",
+    "testing",
+    "frontend",
+    "starter",
+    "boilerplate",
+    "babel"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }
