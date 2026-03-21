@@ -1,0 +1,8 @@
+{
+  "postMessage": "Run npm run dev to start the server",
+  "install": true,
+  "env": [
+    "PORT=3000",
+    "MONGO_URI=your_mongo_uri"
+  ]
+}
