@@ -1,6 +1,21 @@
 {
-  "name": "node-js-babel",
+  "id": "react-ts",
+  "name": "React JS Simple",
   "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "tags": [
+    "auth",
+    "jwt",
+    "node",
+    "api"
+  ],
+  "keywords": [
+    "login",
+    "signup",
+    "authentication"
+  ],
+  "author": {
+    "name": "Samson",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }
