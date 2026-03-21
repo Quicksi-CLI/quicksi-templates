@@ -1,0 +1,12 @@
+{
+  "id": "example-template",
+  "name": "Example Template",
+  "description": "Basic working template example",
+  "tags": ["example"],
+  "keywords": ["starter"],
+  "author": {
+    "name": "Quicksi",
+    "github_username": "Quicksi-CLI",
+    "avatar": "https://avatars.githubusercontent.com/u/12345677"
+  }
+}
