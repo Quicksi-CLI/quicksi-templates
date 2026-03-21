@@ -1,6 +1,39 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "fullstack-node-react-mongo",
+  "name": "Fullstack Node.js, React & MongoDB Starter",
+  "description": "A full-stack JavaScript starter project built with Node.js, React, and MongoDB, featuring modern tooling such as Babel, Docker, and Swagger for scalable and maintainable application development.",
+  "features": [
+    "Node.js backend with Express.js",
+    "React frontend for building dynamic UIs",
+    "MongoDB for database management",
+    "JWT-based authentication (optional/extendable)",
+    "API documentation with Swagger",
+    "Docker support for containerized development",
+    "Babel for modern JavaScript (ES6+) support",
+    "Structured and scalable project architecture"
+  ],
+  "tags": [
+    "node",
+    "react",
+    "mongodb",
+    "docker",
+    "swagger",
+    "fullstack"
+  ],
+  "keywords": [
+    "nodejs",
+    "react",
+    "mongodb",
+    "fullstack",
+    "docker",
+    "swagger",
+    "api",
+    "boilerplate",
+    "starter"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

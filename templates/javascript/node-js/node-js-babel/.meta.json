@@ -1,6 +1,33 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+    "id": "nodejs-babel-express-starter",
+    "name": "Node.js Express Babel Starter",
+    "description": "A minimal Node.js starter template using Express.js with Babel support, preconfigured with essential tools for building modern and maintainable backend applications.",
+    "features": [
+        "Node.js and Express.js backend setup",
+        "Babel transpilation for modern JavaScript (ES6+) support",
+        "ESLint configured for code quality and consistency",
+        "CORS preconfigured for cross-origin requests",
+        "Basic utilities and project structure included",
+        "Simple and clean server setup"
+    ],
+    "tags": [
+        "node",
+        "express",
+        "babel",
+        "backend"
+    ],
+    "keywords": [
+        "nodejs",
+        "express",
+        "babel",
+        "api",
+        "backend",
+        "starter",
+        "boilerplate"
+    ],
+    "author": {
+        "name": "Anayo S. Oleru",
+        "github_username": "anayo-samson",
+        "avatar": "https://github.com/anayo-samson.png"
+    }
 }

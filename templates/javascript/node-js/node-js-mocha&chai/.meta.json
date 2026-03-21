@@ -1,6 +1,41 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "nodejs-mocha-chai-starter",
+  "name": "Node.js Express Mocha & Chai Starter",
+  "description": "A Node.js starter template with Express.js, Babel support, and a complete testing setup using Mocha and Chai for asynchronous testing and coverage reporting.",
+  "features": [
+    "Node.js and Express.js backend setup",
+    "Babel transpilation for modern JavaScript (ES6+) support",
+    "ESLint configured for code quality and consistency",
+    "CORS preconfigured for cross-origin requests",
+    "Basic utilities and scalable project structure",
+    "Simple and clean server setup",
+    "Mocha and Chai configured for testing",
+    "Example passing test included",
+    "Support for asynchronous testing and coverage reporting"
+  ],
+  "tags": [
+    "node",
+    "express",
+    "babel",
+    "mocha",
+    "chai",
+    "testing",
+    "backend"
+  ],
+  "keywords": [
+    "nodejs",
+    "express",
+    "mocha",
+    "chai",
+    "testing",
+    "api",
+    "backend",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

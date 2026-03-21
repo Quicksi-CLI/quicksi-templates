@@ -1,6 +1,54 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "nodejs-mongo-docker-starter",
+  "name": "Node.js MongoDB Docker Starter",
+  "description": "A production-ready Node.js starter template with MongoDB, Docker support, and a fully configured development workflow including testing, linting, CI, and security best practices.",
+  "features": [
+    "Node.js backend setup",
+    "MongoDB NoSQL database integration",
+    "Mongoose for object data modeling",
+    "Authentication and authorization using Passport",
+    "Request validation with Joi",
+    "Logging with Morgan and Winston",
+    "Testing with Jest",
+    "Centralized error handling mechanism",
+    "Process management with PM2 for production",
+    "Environment variable management using Dotenv and cross-env",
+    "Security best practices with Helmet",
+    "CORS enabled",
+    "Gzip compression using Compression",
+    "Docker support for containerization",
+    "CI setup with Travis CI",
+    "Code coverage integration with Coveralls",
+    "Linting with ESLint and formatting with Prettier",
+    "Consistent editor configuration using EditorConfig",
+    "Dependency management with Yarn"
+  ],
+  "tags": [
+    "node",
+    "mongodb",
+    "docker",
+    "api",
+    "backend",
+    "auth",
+    "jest",
+    "ci"
+  ],
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "mongoose",
+    "docker",
+    "passport",
+    "jest",
+    "api",
+    "backend",
+    "boilerplate",
+    "starter",
+    "production-ready"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

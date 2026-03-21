@@ -1,6 +1,37 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "nodejs-mongo-graphql-starter",
+  "name": "Node.js MongoDB GraphQL Starter",
+  "description": "A Node.js starter template featuring a GraphQL API with MongoDB integration, built with Express.js and equipped with modern tooling for scalable backend development.",
+  "features": [
+    "Node.js and Express.js backend setup",
+    "GraphQL API architecture",
+    "MongoDB NoSQL database integration",
+    "Mongoose for object data modeling",
+    "Environment variable management using Dotenv",
+    "Linting with ESLint and formatting with Prettier",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "node",
+    "graphql",
+    "mongodb",
+    "mongoose",
+    "backend",
+    "api"
+  ],
+  "keywords": [
+    "nodejs",
+    "graphql",
+    "mongodb",
+    "mongoose",
+    "api",
+    "backend",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

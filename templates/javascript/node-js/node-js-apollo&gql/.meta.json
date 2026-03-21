@@ -1,6 +1,37 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "nodejs-apollo-graphql-postgres-starter",
+  "name": "Node.js Apollo GraphQL PostgreSQL Starter",
+  "description": "A Node.js starter template featuring a GraphQL API powered by Apollo Server, with PostgreSQL and Sequelize for relational data management, designed for scalable backend development.",
+  "features": [
+    "Node.js and Express.js backend setup",
+    "GraphQL API using Apollo Server (apollo-server-express)",
+    "PostgreSQL relational database integration",
+    "Sequelize ORM for database modeling and queries",
+    "Structured and scalable project architecture"
+  ],
+  "tags": [
+    "node",
+    "graphql",
+    "apollo",
+    "postgresql",
+    "sequelize",
+    "backend",
+    "api"
+  ],
+  "keywords": [
+    "nodejs",
+    "graphql",
+    "apollo",
+    "postgresql",
+    "sequelize",
+    "api",
+    "backend",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

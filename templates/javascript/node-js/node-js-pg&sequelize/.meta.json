@@ -1,6 +1,41 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "nodejs-postgres-sequelize-mocha-starter",
+  "name": "Node.js PostgreSQL Sequelize Mocha Starter",
+  "description": "A Node.js starter template with a RESTful API, PostgreSQL database integration using Sequelize, and a complete testing setup with Mocha and Chai, along with modern development tooling.",
+  "features": [
+    "Node.js and Express.js backend setup",
+    "RESTful API architecture",
+    "PostgreSQL relational database integration",
+    "Sequelize ORM for database modeling and queries",
+    "Mocha and Chai configured for testing",
+    "Babel transpilation for modern JavaScript (ES6+) support",
+    "Linting with ESLint and formatting with Prettier",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "node",
+    "postgresql",
+    "sequelize",
+    "mocha",
+    "chai",
+    "backend",
+    "api"
+  ],
+  "keywords": [
+    "nodejs",
+    "postgresql",
+    "sequelize",
+    "mocha",
+    "chai",
+    "testing",
+    "api",
+    "backend",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

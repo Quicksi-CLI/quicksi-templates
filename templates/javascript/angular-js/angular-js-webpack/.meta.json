@@ -1,20 +1,32 @@
 {
-  "id": "angular-js-webpack",
-  "name": "angular-js-webpack",
-  "description": "Angular JS webpack that is description here",
+  "id": "angularjs-webpack-starter",
+  "name": "AngularJS Webpack Starter",
+  "description": "A simple and complete starter template for building AngularJS (1.x) applications using Webpack, with modern JavaScript support and a ready-to-use development workflow.",
+  "features": [
+    "No Gulp or Grunt — uses simple npm scripts",
+    "ES6+ (ES2015+) support via Babel",
+    "Source maps enabled for easier debugging",
+    "Development server with live reload",
+    "Optimized production builds with cache busting",
+    "Testing setup with Karma and Jasmine",
+    "Code coverage reporting for tests"
+  ],
   "tags": [
-    "auth",
-    "jwt",
+    "angularjs",
+    "webpack",
     "node",
-    "api"
+    "frontend"
   ],
   "keywords": [
-    "login",
-    "signup",
-    "authentication"
+    "angularjs",
+    "webpack",
+    "starter",
+    "boilerplate",
+    "frontend",
+    "javascript"
   ],
   "author": {
-    "name": "Samson",
+    "name": "Anayo S. Oleru",
     "github_username": "anayo-samson",
     "avatar": "https://github.com/anayo-samson.png"
   }
