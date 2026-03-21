@@ -1,0 +1,51 @@
+{
+  "id": "nodejs-mocha-chai-tutorial-126",
+  "name": "Node.js TDD Setup with Mocha & Chai (Tutorial 126)",
+  "description": "A Node.js TDD starter kit based on a YouTube crash course, demonstrating how to set up and use Mocha, Chai, and Supertest for testing. Includes a simple Express server with ES6 support via Babel.",
+  "features": [
+    "Node.js and Express.js backend setup",
+    "Babel transpilation for ES6+ support",
+    "Mocha configured as the testing framework",
+    "Chai for assertions",
+    "Supertest for API testing",
+    "Simple example tests included",
+    "Step-by-step guidance via YouTube tutorial",
+    "Quick project setup using QuickSI CLI"
+  ],
+  "tags": [
+    "node",
+    "testing",
+    "mocha",
+    "chai",
+    "supertest",
+    "tdd",
+    "backend"
+  ],
+  "keywords": [
+    "nodejs",
+    "mocha",
+    "chai",
+    "supertest",
+    "testing",
+    "tdd",
+    "api",
+    "tutorial",
+    "starter"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  },
+  "resources": {
+    "video": "https://www.youtube.com/watch?v=rrj2YTNuG_w",
+    "github": "https://github.com/AnayoOleru/setup-nodejs-test-mocha-chai"
+  },
+  "getting_started": [
+    "Run: npx quicksi",
+    "Select: tutorials",
+    "Choose the input field",
+    "Enter tutorial code: 126"
+  ],
+  "example_test": "import chai from 'chai';\nimport { describe, it } from 'mocha';\n\nconst { expect } = chai;\n\ndescribe('Mock Test', () => {\n  it('should equal 2', () => {\n    expect(2 === 1).to.eql(false);\n  });\n\n  it('should return 11', () => {\n    expect(9 + 2).to.eql(11);\n  });\n});"
+}
