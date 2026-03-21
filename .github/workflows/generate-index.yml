@@ -1,0 +1,35 @@
+name: Generate Template Index
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Generate index
+        run: node scripts/generateIndex.js
+
+      - name: Commit generated files
+        run: |
+          git config user.name "quicksi-bot"
+          git config user.email "bot@quicksi.dev"
+
+          git add template-index.json authors.json
+
+          git diff --cached --quiet || git commit -m "chore: update index for release"
+
+          git push origin main
