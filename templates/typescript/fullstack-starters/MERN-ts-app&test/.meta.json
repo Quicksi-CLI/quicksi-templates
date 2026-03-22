@@ -1,6 +1,51 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "mern-typescript-multiplatform-starter",
+  "name": "MERN TypeScript Multi-Platform Starter",
+  "description": "A full-stack MERN (MongoDB, Express, React, Node.js) starter template built with TypeScript, supporting web and mobile platforms with integrated authentication, testing, and modern development tooling.",
+  "features": [
+    "Full-stack setup with Node.js, Express.js, React, and MongoDB",
+    "TypeScript support across frontend and backend",
+    "Multi-platform support: Web, Mobile Web, Android, and iOS",
+    "React frontend with React Router for navigation",
+    "React Native (Expo) setup for mobile applications",
+    "MongoDB database integration",
+    "Multimedia storage support",
+    "Authentication using OAuth and Passport.js",
+    "Redux for state management",
+    "Jest configured for testing",
+    "UI frameworks: NativeBase and Semantic UI React",
+    "Docker support and scalable project architecture"
+  ],
+  "tags": [
+    "mern",
+    "typescript",
+    "react",
+    "react-native",
+    "expo",
+    "mongodb",
+    "node",
+    "fullstack",
+    "mobile",
+    "testing"
+  ],
+  "keywords": [
+    "mern",
+    "typescript",
+    "react",
+    "react-native",
+    "expo",
+    "mongodb",
+    "nodejs",
+    "fullstack",
+    "mobile",
+    "redux",
+    "jest",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

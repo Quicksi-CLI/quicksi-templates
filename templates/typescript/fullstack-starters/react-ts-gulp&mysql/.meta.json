@@ -1,6 +1,41 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-typescript-gulp-mysql-starter",
+  "name": "React TypeScript Gulp MySQL Starter",
+  "description": "A full-stack starter template combining React and Node.js with TypeScript, using Gulp for task automation, Pug for templating, and MySQL for relational data storage, with testing support included.",
+  "features": [
+    "Full-stack setup with Node.js backend and React frontend",
+    "TypeScript support across the application",
+    "Gulp configured for task automation",
+    "Pug templating with Gulp-Pug integration",
+    "MySQL relational database integration",
+    "Mocha configured for testing",
+    "Structured and scalable project architecture"
+  ],
+  "tags": [
+    "react",
+    "typescript",
+    "gulp",
+    "mysql",
+    "node",
+    "fullstack",
+    "backend",
+    "frontend"
+  ],
+  "keywords": [
+    "react",
+    "typescript",
+    "gulp",
+    "mysql",
+    "nodejs",
+    "fullstack",
+    "pug",
+    "mocha",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }
