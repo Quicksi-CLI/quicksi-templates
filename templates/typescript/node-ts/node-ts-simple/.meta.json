@@ -23,8 +23,11 @@
     "boilerplate",
     "minimal"
   ],
+  "programming_lang": "javascript",
+  "resource_type": "starter",
   "author": {
     "name": "Anayo S. Oleru",
+    "role": "Software Engineer",
     "github_username": "anayo-samson",
     "avatar": "https://github.com/anayo-samson.png"
   }

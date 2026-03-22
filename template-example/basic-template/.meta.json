@@ -3,9 +3,12 @@
   "name": "Example Template",
   "description": "Basic working template example",
   "tags": ["example"],
+  "programming_lang": "javascript",
+  "resource_type": "starter",
   "keywords": ["starter"],
   "author": {
     "name": "Quicksi",
+    "role": "Software Engineer",
     "github_username": "Quicksi-CLI",
     "avatar": "https://avatars.githubusercontent.com/u/12345677"
   }

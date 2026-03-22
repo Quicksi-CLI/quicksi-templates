@@ -9,6 +9,16 @@ const VERSION = process.env.GITHUB_REF_NAME || "latest";
 const REPO_URL = "https://github.com/Quicksi-CLI/quicksi-templates";
 
 /**
+ * Load JSON safely
+ */
+function loadJSON(filePath, fallback) {
+  if (fs.existsSync(filePath)) {
+    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  }
+  return fallback;
+}
+
+/**
  * Recursively find all templates
  */
 function getAllTemplates(dir) {
@@ -34,7 +44,7 @@ function getAllTemplates(dir) {
 }
 
 /**
- * Generate GitHub tree URL
+ * Generate GitHub URL
  */
 function getGitHubUrl(relativePath) {
   return `${REPO_URL}/tree/main/templates/${relativePath}`;
@@ -54,13 +64,60 @@ function getAvatar(meta) {
 }
 
 /**
+ * Build file tree (frontend-ready)
+ */
+function buildTree(dir) {
+  const stats = fs.statSync(dir);
+
+  if (stats.isFile()) {
+    return {
+      name: path.basename(dir),
+      type: "file",
+    };
+  }
+
+  const children = fs
+    .readdirSync(dir)
+    .filter((item) => item !== ".meta.json")
+    .map((item) => buildTree(path.join(dir, item)));
+
+  return {
+    name: path.basename(dir),
+    type: "folder",
+    children,
+  };
+}
+
+/**
+ * Find existing template across versions
+ */
+function findExistingTemplate(existingIndex, id) {
+  for (const version of Object.values(existingIndex.versions)) {
+    const found = version.templates.find((t) => t.id === id);
+    if (found) return found;
+  }
+  return null;
+}
+
+/**
  * Main
  */
 function run() {
+  const now = new Date().toISOString();
+
+  const existingIndex = loadJSON(OUTPUT_INDEX, { versions: {} });
+  const existingAuthors = loadJSON(OUTPUT_AUTHORS, { authors: [] });
+
+  const authorsMap = {};
+
+  // Load existing authors
+  for (const author of existingAuthors.authors) {
+    authorsMap[author.github_username] = author;
+  }
+
   const templateFolders = getAllTemplates(TEMPLATES_DIR);
 
   const templates = [];
-  const authorsMap = {};
   const idSet = new Set();
 
   for (const folder of templateFolders) {
@@ -70,51 +127,65 @@ function run() {
       const meta = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
 
       // 🔥 VALIDATE TEMPLATE ID
-      if (!meta.id) {
-        throw new Error(`Missing "id" in ${metaPath}`);
-      }
-
-      if (!/^[a-z0-9-]+$/.test(meta.id)) {
-        throw new Error(`Invalid id format: "${meta.id}"`);
-      }
-
-      if (idSet.has(meta.id)) {
-        throw new Error(`Duplicate template id: "${meta.id}"`);
-      }
+      if (!meta.id) throw new Error(`Missing "id"`);
+      if (!/^[a-z0-9-]+$/.test(meta.id))
+        throw new Error(`Invalid id format: ${meta.id}`);
+      if (idSet.has(meta.id))
+        throw new Error(`Duplicate id: ${meta.id}`);
 
       idSet.add(meta.id);
 
       // 🔥 VALIDATE AUTHOR
       if (!meta.author?.github_username) {
-        throw new Error(`Missing author.github_username in ${metaPath}`);
+        throw new Error(`Missing author.github_username`);
       }
 
       const authorKey = meta.author.github_username;
 
-      // 🔥 ENSURE AUTHOR CONSISTENCY
+      // 🔥 HANDLE AUTHOR (merge + new author detection)
       if (!authorsMap[authorKey]) {
         authorsMap[authorKey] = {
           name: meta.author.name,
+          role: meta.author.role || null,
           github_username: authorKey,
           avatar: getAvatar(meta),
+          date_joined: now,
           templates: [],
         };
       } else {
-        // Prevent mismatch (same username, different name)
-        if (authorsMap[authorKey].name !== meta.author.name) {
-          throw new Error(
-            `Author mismatch for ${authorKey}: inconsistent name`
-          );
-        }
+        // Keep author updated if new info provided
+        authorsMap[authorKey].name =
+          meta.author.name || authorsMap[authorKey].name;
+
+        authorsMap[authorKey].role =
+          meta.author.role || authorsMap[authorKey].role;
+
+        authorsMap[authorKey].avatar =
+          getAvatar(meta) || authorsMap[authorKey].avatar;
       }
 
-      // 🔥 attach template to author
-      authorsMap[authorKey].templates.push(meta.id);
+      if (!authorsMap[authorKey].templates.includes(meta.id)) {
+        authorsMap[authorKey].templates.push(meta.id);
+      }
 
-      // 🔥 relative path
+      // 🔥 RELATIVE PATH
       const relativePath = folder.replace(TEMPLATES_DIR + path.sep, "");
 
-      // 🔥 add template (clean structure)
+      // 🔥 FIND EXISTING TEMPLATE (for date_created)
+      const existingTemplate = findExistingTemplate(
+        existingIndex,
+        meta.id
+      );
+
+      const date_created = existingTemplate?.date_created || now;
+
+      // 🔥 BUILD TREE
+      const tree = buildTree(folder);
+
+      // 🔥 CLEAN AUTHOR (remove templates array for embedding)
+      const { templates: _, ...cleanAuthor } = authorsMap[authorKey];
+
+      // 🔥 ADD TEMPLATE
       templates.push({
         id: meta.id,
         name: meta.name,
@@ -123,42 +194,41 @@ function run() {
         keywords: meta.keywords || [],
         path: relativePath,
         github_url: getGitHubUrl(relativePath),
-        author: {
-          github_username: authorKey,
-        },
+        version: VERSION,
+        date_created,
+        author: cleanAuthor,
+        tree,
       });
 
     } catch (err) {
       console.error(`❌ Error in ${metaPath}`);
       console.error(err.message);
-
-      process.exit(1); // 🔥 FAIL CI
+      process.exit(1);
     }
   }
 
-  const authors = Object.values(authorsMap);
+  // 🔥 SAVE VERSION SNAPSHOT
+  existingIndex.versions[VERSION] = {
+    generatedAt: now,
+    templates,
+  };
 
-  // 🔥 WRITE TEMPLATE INDEX
   fs.writeFileSync(
     OUTPUT_INDEX,
+    JSON.stringify(existingIndex, null, 2)
+  );
+
+  // 🔥 SAVE AUTHORS
+  fs.writeFileSync(
+    OUTPUT_AUTHORS,
     JSON.stringify(
-      {
-        version: VERSION,
-        generatedAt: new Date().toISOString(),
-        templates,
-      },
+      { authors: Object.values(authorsMap) },
       null,
       2
     )
   );
 
-  // 🔥 WRITE AUTHORS
-  fs.writeFileSync(
-    OUTPUT_AUTHORS,
-    JSON.stringify({ authors }, null, 2)
-  );
-
-  console.log("✅ Template index and authors generated successfully");
+  console.log(`✅ Generated version ${VERSION}`);
 }
 
 run();
