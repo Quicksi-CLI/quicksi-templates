@@ -1,6 +1,42 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "node-ts-mysql-sequelize-auth-starter",
+  "name": "Node.js TypeScript MySQL Sequelize Auth Starter",
+  "description": "A Node.js starter template using TypeScript with MySQL and Sequelize, featuring a basic authentication system with signup and login, along with a structured backend architecture.",
+  "features": [
+    "Node.js backend with TypeScript",
+    "ts-node configured for direct TypeScript execution",
+    "MySQL relational database integration",
+    "Sequelize ORM for database modeling and queries",
+    "Authentication system with signup and login",
+    "Input validation for authentication endpoints",
+    "Sample user model and migration setup",
+    "Prebuilt controllers, middlewares, and routes",
+    "Structured and scalable project architecture"
+  ],
+  "tags": [
+    "node",
+    "typescript",
+    "mysql",
+    "sequelize",
+    "auth",
+    "backend",
+    "api"
+  ],
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "mysql",
+    "sequelize",
+    "authentication",
+    "login",
+    "signup",
+    "api",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

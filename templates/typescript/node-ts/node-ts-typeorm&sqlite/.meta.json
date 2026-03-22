@@ -1,6 +1,38 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "node-ts-typeorm-sqlite-auth-starter",
+  "name": "Node.js TypeScript TypeORM SQLite Auth Starter",
+  "description": "A Node.js starter template using TypeScript with SQLite and TypeORM, featuring Express.js and Passport.js for building lightweight backend applications with authentication.",
+  "features": [
+    "Node.js backend with Express.js and TypeScript",
+    "ts-node configured for direct TypeScript execution",
+    "SQLite database for lightweight data storage",
+    "TypeORM for object-relational mapping",
+    "Authentication using Passport.js",
+    "Structured and scalable project architecture"
+  ],
+  "tags": [
+    "node",
+    "typescript",
+    "typeorm",
+    "sqlite",
+    "passport",
+    "backend",
+    "auth"
+  ],
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "typeorm",
+    "sqlite",
+    "passport",
+    "authentication",
+    "api",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

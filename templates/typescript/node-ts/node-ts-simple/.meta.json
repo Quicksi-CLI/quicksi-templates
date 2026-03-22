@@ -1,20 +1,30 @@
 {
   "id": "node-ts-simple",
-  "name": "node-ts-simple",
-  "description": "Node.js authentication API with JWT",
+  "name": "Node.js TypeScript Simple Starter",
+  "description": "A minimal Node.js starter template using TypeScript and ts-node, providing a simple and lightweight setup for building backend applications quickly.",
+  "features": [
+    "Node.js backend with TypeScript",
+    "ts-node configured for direct TypeScript execution",
+    "Basic TypeScript configuration (tsconfig) included",
+    "Simple and minimal project structure"
+  ],
   "tags": [
-    "auth",
-    "jwt",
     "node",
-    "api"
+    "typescript",
+    "backend",
+    "simple"
   ],
   "keywords": [
-    "login",
-    "signup",
-    "authentication"
+    "nodejs",
+    "typescript",
+    "ts-node",
+    "backend",
+    "starter",
+    "boilerplate",
+    "minimal"
   ],
   "author": {
-    "name": "Samson",
+    "name": "Anayo S. Oleru",
     "github_username": "anayo-samson",
     "avatar": "https://github.com/anayo-samson.png"
   }
