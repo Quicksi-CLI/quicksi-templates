@@ -1,6 +1,42 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-ts-webpack-redux-jest-advanced",
+  "name": "React TypeScript Webpack Redux Jest Advanced Starter",
+  "description": "An advanced React starter template using TypeScript with a custom Webpack setup, Redux for state management, and Jest for testing. Optimized for performance with multiple TypeScript loader options and hot reloading support.",
+  "features": [
+    "React application setup with TypeScript",
+    "Custom Webpack configuration for development and production",
+    "Redux configured for state management",
+    "Jest configured for testing",
+    "No Babel — optimized TypeScript-only build pipeline",
+    "High-performance setup with ts-loader and awesome-typescript-loader",
+    "Comparison scripts for different TypeScript loaders (npm run dev / dev:awesome)",
+    "React Hot Loader for fast development experience",
+    "Structured and scalable project architecture"
+  ],
+  "tags": [
+    "react",
+    "typescript",
+    "webpack",
+    "redux",
+    "jest",
+    "frontend",
+    "performance"
+  ],
+  "keywords": [
+    "react",
+    "typescript",
+    "webpack",
+    "redux",
+    "jest",
+    "ts-loader",
+    "performance",
+    "frontend",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

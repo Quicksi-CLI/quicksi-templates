@@ -1,6 +1,35 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-ts-webpack-jest-starter",
+  "name": "React TypeScript Webpack Jest Starter",
+  "description": "A React starter template using TypeScript with a custom Webpack setup and integrated testing using Jest, along with linting for code quality and maintainability.",
+  "features": [
+    "React application setup with TypeScript",
+    "Custom Webpack configuration for development and production",
+    "Jest configured with preprocessor support for testing",
+    "Linting configured using TSLint",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "react",
+    "typescript",
+    "webpack",
+    "jest",
+    "frontend",
+    "testing"
+  ],
+  "keywords": [
+    "react",
+    "typescript",
+    "webpack",
+    "jest",
+    "testing",
+    "frontend",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

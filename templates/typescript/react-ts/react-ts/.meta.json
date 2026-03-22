@@ -1,20 +1,31 @@
 {
   "id": "react-ts",
-  "name": "React TS Simple",
-  "description": "Node.js authentication API with JWT",
+  "name": "React TypeScript Simple Starter",
+  "description": "A minimal React starter template using TypeScript, featuring a simple setup with testing support for building scalable frontend applications.",
+  "features": [
+    "React application setup with TypeScript",
+    "TypeScript configuration for development and production",
+    "Jest configured for testing",
+    "Simple and clean project structure"
+  ],
   "tags": [
-    "auth",
-    "jwt",
-    "node",
-    "api"
+    "react",
+    "typescript",
+    "frontend",
+    "testing",
+    "simple"
   ],
   "keywords": [
-    "login",
-    "signup",
-    "authentication"
+    "react",
+    "typescript",
+    "frontend",
+    "jest",
+    "starter",
+    "boilerplate",
+    "minimal"
   ],
   "author": {
-    "name": "Samson",
+    "name": "Anayo S. Oleru",
     "github_username": "anayo-samson",
     "avatar": "https://github.com/anayo-samson.png"
   }
