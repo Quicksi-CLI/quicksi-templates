@@ -1,6 +1,36 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-native-typescript-e2e-starter",
+  "name": "React Native TypeScript E2E Starter",
+  "description": "A React Native starter template using TypeScript, designed for building cross-platform mobile applications with a foundation ready for end-to-end (E2E) testing and modern development practices.",
+  "features": [
+    "React Native CLI setup for mobile development",
+    "TypeScript support for scalable and maintainable code",
+    "Cross-platform support for Android and iOS",
+    "Prettier configured for code formatting",
+    "Foundation for end-to-end (E2E) testing integration",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "react-native",
+    "typescript",
+    "mobile",
+    "e2e",
+    "testing"
+  ],
+  "keywords": [
+    "react-native",
+    "typescript",
+    "mobile",
+    "android",
+    "ios",
+    "e2e",
+    "testing",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

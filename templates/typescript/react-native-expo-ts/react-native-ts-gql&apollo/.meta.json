@@ -1,6 +1,41 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "react-native-typescript-graphql-apollo-starter",
+  "name": "React Native TypeScript GraphQL Apollo Starter",
+  "description": "A React Native starter template using TypeScript, Apollo Client, and GraphQL, with Expo support for building scalable cross-platform mobile applications and integrated testing setup.",
+  "features": [
+    "React Native setup using Expo",
+    "TypeScript support for scalable and maintainable code",
+    "Cross-platform support for Android and iOS",
+    "GraphQL integration",
+    "Apollo Client configured for data management",
+    "Jest configured for testing",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "react-native",
+    "typescript",
+    "graphql",
+    "apollo",
+    "expo",
+    "mobile",
+    "testing"
+  ],
+  "keywords": [
+    "react-native",
+    "typescript",
+    "graphql",
+    "apollo",
+    "expo",
+    "mobile",
+    "android",
+    "ios",
+    "jest",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }

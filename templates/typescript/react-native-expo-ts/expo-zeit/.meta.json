@@ -1,6 +1,41 @@
 {
-  "name": "node-js-babel",
-  "description": "Node.js authentication API with JWT",
-  "tags": ["auth", "jwt", "node", "api"],
-  "keywords": ["login", "signup", "authentication"]
+  "id": "expo-typescript-zeit-starter",
+  "name": "Expo TypeScript ZEIT Starter",
+  "description": "A mobile starter template built with Expo and TypeScript, featuring API integration with Axios, testing with Jest, and deployment support using ZEIT (Vercel).",
+  "features": [
+    "Expo setup for React Native mobile development",
+    "TypeScript support for scalable and maintainable code",
+    "Cross-platform support for Android and iOS",
+    "Axios configured for API requests",
+    "API deployment support using ZEIT (Vercel)",
+    "Jest configured for testing",
+    "Sample snapshot test included",
+    "Structured and scalable project setup"
+  ],
+  "tags": [
+    "expo",
+    "react-native",
+    "typescript",
+    "vercel",
+    "mobile",
+    "testing"
+  ],
+  "keywords": [
+    "expo",
+    "react-native",
+    "typescript",
+    "vercel",
+    "axios",
+    "mobile",
+    "android",
+    "ios",
+    "jest",
+    "starter",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Anayo S. Oleru",
+    "github_username": "anayo-samson",
+    "avatar": "https://github.com/anayo-samson.png"
+  }
 }
