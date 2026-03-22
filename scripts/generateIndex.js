@@ -64,7 +64,7 @@ function getAvatar(meta) {
 }
 
 /**
- * Build file tree (frontend-ready)
+ * Build file tree
  */
 function buildTree(dir) {
   const stats = fs.statSync(dir);
@@ -89,7 +89,7 @@ function buildTree(dir) {
 }
 
 /**
- * Find existing template across versions
+ * Find existing template
  */
 function findExistingTemplate(existingIndex, id) {
   for (const version of Object.values(existingIndex.versions)) {
@@ -118,6 +118,14 @@ function buildVersionCountMap(existingIndex) {
 }
 
 /**
+ * Normalize values to array
+ */
+function normalize(value) {
+  if (!value) return [];
+  return Array.isArray(value) ? value : [value];
+}
+
+/**
  * Main
  */
 function run() {
@@ -133,7 +141,6 @@ function run() {
     authorsMap[author.github_username] = author;
   }
 
-  // 🔥 Build version count map
   const templateVersionCount = buildVersionCountMap(existingIndex);
 
   const templateFolders = getAllTemplates(TEMPLATES_DIR);
@@ -174,7 +181,6 @@ function run() {
           templates: [],
         };
       } else {
-        // Update author if new info is provided
         authorsMap[authorKey].name =
           meta.author.name || authorsMap[authorKey].name;
 
@@ -189,10 +195,8 @@ function run() {
         authorsMap[authorKey].templates.push(meta.id);
       }
 
-      // RELATIVE PATH
       const relativePath = folder.replace(TEMPLATES_DIR + path.sep, "");
 
-      // EXISTING TEMPLATE (for date_created)
       const existingTemplate = findExistingTemplate(
         existingIndex,
         meta.id
@@ -200,23 +204,23 @@ function run() {
 
       const date_created = existingTemplate?.date_created || now;
 
-      // 🔥 VERSION COUNT
       const version_count =
         (templateVersionCount[meta.id] || 0) + 1;
 
-      // BUILD TREE
       const tree = buildTree(folder);
 
-      // CLEAN AUTHOR (remove templates field)
       const { templates: _, ...cleanAuthor } = authorsMap[authorKey];
 
-      // ADD TEMPLATE
       templates.push({
         id: meta.id,
         name: meta.name,
         description: meta.description,
+
+        // 🔥 NEW FIELDS
+        resource_type: normalize(meta.resource_type),
+        programming_lang: normalize(meta.programming_lang),
+
         tags: meta.tags || [],
-        keywords: meta.keywords || [],
         path: relativePath,
         github_url: getGitHubUrl(relativePath),
         version: VERSION,
@@ -233,7 +237,6 @@ function run() {
     }
   }
 
-  // SAVE VERSION SNAPSHOT
   existingIndex.versions[VERSION] = {
     generatedAt: now,
     templates,
@@ -244,7 +247,6 @@ function run() {
     JSON.stringify(existingIndex, null, 2)
   );
 
-  // SAVE AUTHORS
   fs.writeFileSync(
     OUTPUT_AUTHORS,
     JSON.stringify(
