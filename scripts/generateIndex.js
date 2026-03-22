@@ -100,6 +100,24 @@ function findExistingTemplate(existingIndex, id) {
 }
 
 /**
+ * Build version count map
+ */
+function buildVersionCountMap(existingIndex) {
+  const map = {};
+
+  for (const version of Object.values(existingIndex.versions)) {
+    for (const template of version.templates || []) {
+      if (!map[template.id]) {
+        map[template.id] = 0;
+      }
+      map[template.id]++;
+    }
+  }
+
+  return map;
+}
+
+/**
  * Main
  */
 function run() {
@@ -115,6 +133,9 @@ function run() {
     authorsMap[author.github_username] = author;
   }
 
+  // 🔥 Build version count map
+  const templateVersionCount = buildVersionCountMap(existingIndex);
+
   const templateFolders = getAllTemplates(TEMPLATES_DIR);
 
   const templates = [];
@@ -126,7 +147,7 @@ function run() {
     try {
       const meta = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
 
-      // 🔥 VALIDATE TEMPLATE ID
+      // VALIDATE ID
       if (!meta.id) throw new Error(`Missing "id"`);
       if (!/^[a-z0-9-]+$/.test(meta.id))
         throw new Error(`Invalid id format: ${meta.id}`);
@@ -135,14 +156,14 @@ function run() {
 
       idSet.add(meta.id);
 
-      // 🔥 VALIDATE AUTHOR
+      // VALIDATE AUTHOR
       if (!meta.author?.github_username) {
         throw new Error(`Missing author.github_username`);
       }
 
       const authorKey = meta.author.github_username;
 
-      // 🔥 HANDLE AUTHOR (merge + new author detection)
+      // HANDLE AUTHOR
       if (!authorsMap[authorKey]) {
         authorsMap[authorKey] = {
           name: meta.author.name,
@@ -153,7 +174,7 @@ function run() {
           templates: [],
         };
       } else {
-        // Keep author updated if new info provided
+        // Update author if new info is provided
         authorsMap[authorKey].name =
           meta.author.name || authorsMap[authorKey].name;
 
@@ -168,10 +189,10 @@ function run() {
         authorsMap[authorKey].templates.push(meta.id);
       }
 
-      // 🔥 RELATIVE PATH
+      // RELATIVE PATH
       const relativePath = folder.replace(TEMPLATES_DIR + path.sep, "");
 
-      // 🔥 FIND EXISTING TEMPLATE (for date_created)
+      // EXISTING TEMPLATE (for date_created)
       const existingTemplate = findExistingTemplate(
         existingIndex,
         meta.id
@@ -179,13 +200,17 @@ function run() {
 
       const date_created = existingTemplate?.date_created || now;
 
-      // 🔥 BUILD TREE
+      // 🔥 VERSION COUNT
+      const version_count =
+        (templateVersionCount[meta.id] || 0) + 1;
+
+      // BUILD TREE
       const tree = buildTree(folder);
 
-      // 🔥 CLEAN AUTHOR (remove templates array for embedding)
+      // CLEAN AUTHOR (remove templates field)
       const { templates: _, ...cleanAuthor } = authorsMap[authorKey];
 
-      // 🔥 ADD TEMPLATE
+      // ADD TEMPLATE
       templates.push({
         id: meta.id,
         name: meta.name,
@@ -196,6 +221,7 @@ function run() {
         github_url: getGitHubUrl(relativePath),
         version: VERSION,
         date_created,
+        version_count,
         author: cleanAuthor,
         tree,
       });
@@ -207,7 +233,7 @@ function run() {
     }
   }
 
-  // 🔥 SAVE VERSION SNAPSHOT
+  // SAVE VERSION SNAPSHOT
   existingIndex.versions[VERSION] = {
     generatedAt: now,
     templates,
@@ -218,7 +244,7 @@ function run() {
     JSON.stringify(existingIndex, null, 2)
   );
 
-  // 🔥 SAVE AUTHORS
+  // SAVE AUTHORS
   fs.writeFileSync(
     OUTPUT_AUTHORS,
     JSON.stringify(
