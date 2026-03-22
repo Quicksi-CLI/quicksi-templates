@@ -8,7 +8,7 @@ Whether you're building a simple app or a production-ready system, Quicksi helps
 
 ## ⚡ What is Quicksi?
 
-Quicksi is a CLI tool that allows developers to instantly generate pre-configured project templates with best practices, tools, and structure already in place.
+[Quicksi](https://github.com/Quicksi-CLI/quicksiCLI) is a CLI tool that allows developers to instantly generate pre-configured project templates with best practices, tools, and structure already in place.
 
 Instead of setting up projects from scratch, you can focus on building features.
 
@@ -21,7 +21,7 @@ quicksi <template-id> <my-app-name>
 ```
 ---
 
-## 🔎 Example
+## 🔎 Usage Example
 
 ```bash
 quicksi auth-node my-api
@@ -32,10 +32,20 @@ quicksi auth-node my-api
 ## 📦 Versioning
 
 ```bash 
+quicksi <template-id>@<version> <my-app-name>
+```
+
+## 🔎 Versioning Example
+
+```bash
 quicksi auth-node@v1.0.0 my-app
 ```
 
 ---
+
+### Latest stable version
+Download the latest release here:
+👉 [https://github.com/Quicksi-CLI/quicksi-templates/releases/latest](https://github.com/Quicksi-CLI/quicksi-templates/releases/latest)
 
 ## 🤝 Contributing
 
@@ -49,8 +59,9 @@ We welcome contributions of all kinds:
 - improvements to existing templates
 - bug fixes and optimizations
 - a template that you want to keep reusing like an auth template, payment template etc
+- an update on the main CLI [Quicksi](https://github.com/Quicksi-CLI/quicksiCLI)
 
-Share with the community
+Please give this repo a star and share with the community 
 
 See the [CONTRIBUTING] document.
 Thank you, [contributors]!
@@ -72,4 +83,19 @@ All templates in this repository are open-source under the MIT License.
 
 ## 👤 Creator
 
-Quicksi is created and maintained by [Anayo Oleru]().
+Quicksi is created and maintained by 
+[Anayo S. Oleru](https://github.com/AnayoOleru)
+
+To get updates on new releases every week, please follow me on:
+[X](https://x.com/anayooleru)
+
+
+## 💡 Vision
+
+Quicksi aims to become the go-to developer toolkit for:
+- Rapid project setup
+- Learning through real-world templates
+- Standardizing best practices across projects
+- tutorial examples for students to quickly grasp
+
+Build faster. Build smarter.

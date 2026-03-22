@@ -9,18 +9,20 @@
 
 ## .meta.json Schema
 
+```bash
 {
   "id": string (required, unique),
   "name": string,
   "description": string,
   "tags": string[],
-  "keywords": string[],
   "author": {
     "name": string,
     "github_username": string,
     "avatar": "url to your avatar or github avatar"
   }
 }
+
+```
 
 ---
 
