@@ -1,22 +1,37 @@
-name: Update Latest Version
+name: Sync VERSION File
 
 on:
   push:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
-  update-latest:
+  update-version:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repo
+      # ✅ Checkout main branch (IMPORTANT)
       - name: Checkout repository
         uses: actions/checkout@v3
-      - run: echo "${GITHUB_REF_NAME}" > VERSION
-      - run: |
-          git config user.name "bot"
+        with:
+          ref: main   # 🔥 force main branch
+
+      # ✅ Update VERSION file
+      - name: Update VERSION file
+        run: echo "${GITHUB_REF_NAME}" > VERSION
+
+      # ✅ Commit changes
+      - name: Commit VERSION update
+        run: |
+          git config user.name "quicksi-bot"
           git config user.email "bot@quicksi.io"
+
           git add VERSION
-          git commit -m "update VERSION"
-          git push
+          git commit -m "chore: update VERSION to ${GITHUB_REF_NAME}" || echo "No changes"
+
+      # ✅ Push back to main
+      - name: Push changes
+        run: git push origin main
