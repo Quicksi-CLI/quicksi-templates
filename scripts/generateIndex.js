@@ -9,6 +9,14 @@ const VERSION = process.env.GITHUB_REF_NAME || "latest";
 const REPO_URL = "https://github.com/Quicksi-CLI/quicksi-templates";
 
 /**
+ * Normalize version (always v1.x.x)
+ */
+function normalizeVersion(version) {
+  if (!version) return "v0.0.0";
+  return version.startsWith("v") ? version : `v${version}`;
+}
+
+/**
  * Load JSON safely
  */
 function loadJSON(filePath, fallback) {
@@ -92,7 +100,7 @@ function buildTree(dir) {
  * Find existing template
  */
 function findExistingTemplate(existingIndex, id) {
-  for (const version of Object.values(existingIndex.versions)) {
+  for (const version of Object.values(existingIndex.versions || {})) {
     const found = version.templates.find((t) => t.id === id);
     if (found) return found;
   }
@@ -105,7 +113,7 @@ function findExistingTemplate(existingIndex, id) {
 function buildVersionCountMap(existingIndex) {
   const map = {};
 
-  for (const version of Object.values(existingIndex.versions)) {
+  for (const version of Object.values(existingIndex.versions || {})) {
     for (const template of version.templates || []) {
       if (!map[template.id]) {
         map[template.id] = 0;
@@ -126,10 +134,31 @@ function normalize(value) {
 }
 
 /**
- * Main
+ * Sort versions (latest first)
+ */
+function sortVersions(versionsObj) {
+  return Object.fromEntries(
+    Object.entries(versionsObj).sort((a, b) => {
+      const aParts = a[0].replace("v", "").split(".").map(Number);
+      const bParts = b[0].replace("v", "").split(".").map(Number);
+
+      for (let i = 0; i < 3; i++) {
+        if (aParts[i] !== bParts[i]) {
+          return bParts[i] - aParts[i];
+        }
+      }
+
+      return 0;
+    })
+  );
+}
+
+/**
+ * MAIN
  */
 function run() {
   const now = new Date().toISOString();
+  const normalizedVersion = normalizeVersion(VERSION);
 
   const existingIndex = loadJSON(OUTPUT_INDEX, { versions: {} });
   const existingAuthors = loadJSON(OUTPUT_AUTHORS, { authors: [] });
@@ -215,15 +244,12 @@ function run() {
         id: meta.id,
         name: meta.name,
         description: meta.description,
-
-        // 🔥 NEW FIELDS
         resource_type: normalize(meta.resource_type),
         programming_lang: normalize(meta.programming_lang),
-
         tags: meta.tags || [],
         path: relativePath,
         github_url: getGitHubUrl(relativePath),
-        version: VERSION,
+        version: normalizedVersion,
         date_created,
         version_count,
         author: cleanAuthor,
@@ -237,16 +263,25 @@ function run() {
     }
   }
 
-  existingIndex.versions[VERSION] = {
-    generatedAt: now,
-    templates,
+  // 🔥 MERGE VERSION
+  existingIndex.versions = {
+    ...(existingIndex.versions || {}),
+    [normalizedVersion]: {
+      generatedAt: now,
+      templates,
+    },
   };
 
+  // 🔥 SORT
+  existingIndex.versions = sortVersions(existingIndex.versions);
+
+  // SAVE INDEX
   fs.writeFileSync(
     OUTPUT_INDEX,
     JSON.stringify(existingIndex, null, 2)
   );
 
+  // SAVE AUTHORS
   fs.writeFileSync(
     OUTPUT_AUTHORS,
     JSON.stringify(
@@ -256,7 +291,7 @@ function run() {
     )
   );
 
-  console.log(`✅ Generated version ${VERSION}`);
+  console.log(`✅ Generated version ${normalizedVersion}`);
 }
 
 run();
