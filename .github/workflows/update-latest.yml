@@ -13,20 +13,10 @@ jobs:
       # Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      # Create/update latest.json
-      - name: Write latest.json
-        run: |
-          echo "{\"latest\": \"${GITHUB_REF_NAME}\"}" > latest.json
-
-      # Commit and push
-      - name: Commit latest.json
-        run: |
-          git config user.name "quicksi-bot"
+      - run: echo "${GITHUB_REF_NAME}" > VERSION
+      - run: |
+          git config user.name "bot"
           git config user.email "bot@quicksi.io"
-
-          git add latest.json
-
-          git commit -m "chore: update latest version to ${GITHUB_REF_NAME}" || echo "No changes"
-
+          git add VERSION
+          git commit -m "update VERSION"
           git push
