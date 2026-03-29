@@ -34,12 +34,6 @@
   ],
   "programming_lang": "javascript",
   "resource_type": "tutorial",
-  "author": {
-    "name": "Anayo S. Oleru",
-    "role": "Software Engineer",
-    "github_username": "anayo-samson",
-    "avatar": "https://github.com/anayo-samson.png"
-  },
   "resources": {
     "video": "https://www.youtube.com/watch?v=rrj2YTNuG_w",
     "github": "https://github.com/AnayoOleru/setup-nodejs-test-mocha-chai"
@@ -50,5 +44,6 @@
     "Choose the input field",
     "Enter tutorial code: 126"
   ],
-  "example_test": "import chai from 'chai';\nimport { describe, it } from 'mocha';\n\nconst { expect } = chai;\n\ndescribe('Mock Test', () => {\n  it('should equal 2', () => {\n    expect(2 === 1).to.eql(false);\n  });\n\n  it('should return 11', () => {\n    expect(9 + 2).to.eql(11);\n  });\n});"
+  "example_test": "import chai from 'chai';\nimport { describe, it } from 'mocha';\n\nconst { expect } = chai;\n\ndescribe('Mock Test', () => {\n  it('should equal 2', () => {\n    expect(2 === 1).to.eql(false);\n  });\n\n  it('should return 11', () => {\n    expect(9 + 2).to.eql(11);\n  });\n});",
+  "author_id": "anayooleru"
 }

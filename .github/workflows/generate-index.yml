@@ -21,20 +21,20 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20   # your script runtime (NOT the action runtime)
+          node-version: 20
 
       - name: Generate index
         run: node scripts/generateIndex.js
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
 
-      - name: Commit generated files
+      - name: Commit generated index
         run: |
           git config user.name "quicksi-bot"
           git config user.email "bot@quicksi.dev"
 
-          git add template-index.json authors.json
+          git add template-index.json
 
-          git diff --cached --quiet || git commit -m "chore: update index for release"
+          git diff --cached --quiet || git commit -m "chore: update index for ${{ github.ref_name }}"
 
           git push origin main

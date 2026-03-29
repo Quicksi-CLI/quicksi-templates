@@ -9,7 +9,7 @@ const VERSION = process.env.GITHUB_REF_NAME || "latest";
 const REPO_URL = "https://github.com/Quicksi-CLI/quicksi-templates";
 
 /**
- * Normalize version (always v1.x.x)
+ * Normalize version
  */
 function normalizeVersion(version) {
   if (!version) return "v0.0.0";
@@ -27,7 +27,7 @@ function loadJSON(filePath, fallback) {
 }
 
 /**
- * Recursively find all templates
+ * Recursively find templates
  */
 function getAllTemplates(dir) {
   let results = [];
@@ -52,23 +52,10 @@ function getAllTemplates(dir) {
 }
 
 /**
- * Generate GitHub URL
+ * GitHub URL
  */
 function getGitHubUrl(relativePath) {
   return `${REPO_URL}/tree/main/templates/${relativePath}`;
-}
-
-/**
- * Generate avatar
- */
-function getAvatar(meta) {
-  if (meta.author?.avatar) return meta.author.avatar;
-
-  if (meta.author?.github_username) {
-    return `https://github.com/${meta.author.github_username}.png`;
-  }
-
-  return null;
 }
 
 /**
@@ -126,7 +113,7 @@ function buildVersionCountMap(existingIndex) {
 }
 
 /**
- * Normalize values to array
+ * Normalize to array
  */
 function normalize(value) {
   if (!value) return [];
@@ -161,17 +148,12 @@ function run() {
   const normalizedVersion = normalizeVersion(VERSION);
 
   const existingIndex = loadJSON(OUTPUT_INDEX, { versions: {} });
-  const existingAuthors = loadJSON(OUTPUT_AUTHORS, { authors: [] });
 
-  const authorsMap = {};
-
-  // Load existing authors
-  for (const author of existingAuthors.authors) {
-    authorsMap[author.github_username] = author;
-  }
+  // 🔥 LOAD AUTHORS (SOURCE OF TRUTH)
+  const authorsData = loadJSON(OUTPUT_AUTHORS, { authors: {} });
+  const authorsMap = authorsData.authors || {};
 
   const templateVersionCount = buildVersionCountMap(existingIndex);
-
   const templateFolders = getAllTemplates(TEMPLATES_DIR);
 
   const templates = [];
@@ -183,7 +165,7 @@ function run() {
     try {
       const meta = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
 
-      // VALIDATE ID
+      // ✅ VALIDATE ID
       if (!meta.id) throw new Error(`Missing "id"`);
       if (!/^[a-z0-9-]+$/.test(meta.id))
         throw new Error(`Invalid id format: ${meta.id}`);
@@ -192,39 +174,33 @@ function run() {
 
       idSet.add(meta.id);
 
-      // VALIDATE AUTHOR
-      if (!meta.author?.github_username) {
-        throw new Error(`Missing author.github_username`);
+      // ✅ VALIDATE AUTHOR_ID
+      if (!meta.author_id) {
+        throw new Error(`Missing "author_id" in ${meta.id}`);
       }
 
-      const authorKey = meta.author.github_username;
+      const baseAuthor = authorsMap[meta.author_id];
 
-      // HANDLE AUTHOR
-      if (!authorsMap[authorKey]) {
-        authorsMap[authorKey] = {
-          name: meta.author.name,
-          role: meta.author.role || null,
-          github_username: authorKey,
-          avatar: getAvatar(meta),
-          date_joined: now,
-          templates: [],
-        };
-      } else {
-        authorsMap[authorKey].name =
-          meta.author.name || authorsMap[authorKey].name;
-
-        authorsMap[authorKey].role =
-          meta.author.role || authorsMap[authorKey].role;
-
-        authorsMap[authorKey].avatar =
-          getAvatar(meta) || authorsMap[authorKey].avatar;
+      if (!baseAuthor) {
+        throw new Error(
+          `Author "${meta.author_id}" not found in authors.json`
+        );
       }
 
-      if (!authorsMap[authorKey].templates.includes(meta.id)) {
-        authorsMap[authorKey].templates.push(meta.id);
-      }
+      // 🔥 CLEAN AUTHOR OBJECT (DENORMALIZED OUTPUT)
+      const author = {
+        name: baseAuthor.name,
+        github_username: baseAuthor.github_username,
+        avatar:
+          baseAuthor.avatar ||
+          `https://res.cloudinary.com/dvfr0z8wr/image/upload/v1774187729/Quicksi/pattern_brick-wall-2_1_2_0-0_0_1__hsla_240_7_18_1.00__hsla_47_81_61_1.00__hsla_4_90_58_1.00.png`,
+        role: baseAuthor.role || null,
+      };
 
-      const relativePath = folder.replace(TEMPLATES_DIR + path.sep, "");
+      const relativePath = folder.replace(
+        TEMPLATES_DIR + path.sep,
+        ""
+      );
 
       const existingTemplate = findExistingTemplate(
         existingIndex,
@@ -238,8 +214,6 @@ function run() {
 
       const tree = buildTree(folder);
 
-      const { templates: _, ...cleanAuthor } = authorsMap[authorKey];
-
       templates.push({
         id: meta.id,
         name: meta.name,
@@ -252,7 +226,7 @@ function run() {
         version: normalizedVersion,
         date_created,
         version_count,
-        author: cleanAuthor,
+        author, // ✅ FULL AUTHOR ATTACHED
         tree,
       });
 
@@ -263,7 +237,7 @@ function run() {
     }
   }
 
-  // 🔥 MERGE VERSION
+  // 🔥 SAVE VERSION
   existingIndex.versions = {
     ...(existingIndex.versions || {}),
     [normalizedVersion]: {
@@ -272,23 +246,11 @@ function run() {
     },
   };
 
-  // 🔥 SORT
   existingIndex.versions = sortVersions(existingIndex.versions);
 
-  // SAVE INDEX
   fs.writeFileSync(
     OUTPUT_INDEX,
     JSON.stringify(existingIndex, null, 2)
-  );
-
-  // SAVE AUTHORS
-  fs.writeFileSync(
-    OUTPUT_AUTHORS,
-    JSON.stringify(
-      { authors: Object.values(authorsMap) },
-      null,
-      2
-    )
   );
 
   console.log(`✅ Generated version ${normalizedVersion}`);
