@@ -24,7 +24,7 @@ quicksi <template-id> <my-app-name>
 ## 🔎 Usage Example
 
 ```bash
-quicksi auth-node my-api
+quicksi auth-node my-app
 ```
 
 ---
