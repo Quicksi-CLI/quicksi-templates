@@ -2,10 +2,23 @@
 
 ## Required Files
 
+- author.json → REQUIRED
 - .meta.json → REQUIRED
 - source files → REQUIRED
 
 ---
+
+## author.json Schema
+```bash
+
+"<your-github-name>": {
+      "name": "<your-fullname/identity-name>",
+      "github_username": "<github-name>",
+      "avatar": "<your-github-avatar-url>",
+      "role": "<your-role>" e.g Backend Developer
+    }
+```
+
 
 ## .meta.json Schema
 
@@ -14,24 +27,14 @@
   "id": string (required, unique),
   "name": string,
   "description": string,
+  "features" string[],
   "tags": string[],
-  "author": {
-    "name": string,
-    "github_username": string,
-    "avatar": "url to your avatar or github avatar"
-  }
+  "programming_lang": string,
+  "resource_type": string,
+  "author_id": string
 }
 
 ```
-
----
-
-## Rules
-
-- ID must be unique across all templates
-- ID must be kebab-case
-- No spaces in ID
-- Template must be installable without manual fixes
 
 ---
 
@@ -44,9 +47,3 @@ Used for:
 - setup instructions
 
 ---
-
-## Disallowed
-
-- API keys
-- hardcoded secrets
-- environment-specific configs

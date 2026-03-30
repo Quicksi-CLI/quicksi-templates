@@ -1,81 +1,98 @@
-# Contributing to Quicksi Templates 🚀
+<p align="center">
+  <a href="https://quicksi.io/" title="Contributing to Quicksi Templates 🚀">
+    <img src="documentation/images/quicksi-logo.png" alt="Project Quicksi Logo" width="244" />
+  </a>
+</p>
 
 Thank you for contributing to Quicksi Templates!
 
 ## 📦 What is a Template?
 
-A template is a reusable code starter that can be reused by other developers.
+A template is a reusable code starter that can be reused by other developers. Templates can be:
+
+### Core Types
+- Starters — basic project boilerplates to begin development
+- Tutorials — guided starters used in courses, blogs, or workshops
+- Configurations — pre-configured setups (ESLint, Tailwind, Webpack, etc.)
+- Architecture Templates — scalable project structures (MVC, Clean Architecture, Monorepo, etc.)
+
+### Development-Focused Templates
+- API Starters — REST, GraphQL, gRPC backends
+- Authentication Templates — JWT, OAuth, session-based auth
+- Database Setups — Prisma, Sequelize, MongoDB, PostgreSQL configs
+- Microservices Templates — service-based architecture setups
+- Real-time Apps — WebSockets, Pusher, Socket.io starters
+
+### Frontend & UI Templates
+- UI Starters — prebuilt UI layouts or dashboards
+- Mobile Starters — React Native, Flutter setups
+- Component Libraries — reusable UI components
+- Design System Templates — scalable UI systems
+
+### DevOps & Tooling Templates
+- Docker Templates — containerized app setups
+- CI/CD Templates — GitHub Actions, pipelines
+- Deployment Templates — AWS, Vercel, Netlify setups
+- Testing Templates — Jest, Vitest, Cypress setups
+- CLI Templates — starter CLIs like Quicksi itself
+
+### Advanced & Modern Templates
+- AI/ML Starters — OpenAI, embeddings, AI workflows
+- Automation Templates — bots, scripts, schedulers
+- Integration Templates — Stripe, Firebase, third-party APIs
+- Analytics Templates — tracking, logging, monitoring setups
+
+### Learning & Community Templates
+- Workshop Templates — for bootcamps, events, hackathons
+- Experiment Templates — sandbox environments
+- Example Projects — real-world sample apps
+- Interview/Practice Templates — coding challenges setups
 
 ---
 
-## 🧱 Template Structure
+## 🧭 Step-by-step Guide
 
-Each template MUST follow this structure:
+1. **Fork the repository**
+
+2. **Clone your fork**
 
 ```bash
-my-template/
-├── .meta.json
-├── .template.json (optional)[for env and installation requirements]
-├── package.json (if applicable)
-└── source files...
+git clone https://github.com/<your-username>/quicksi-templates
+cd quicksi-templates
+
 ```
 
----
+3. **Checkout to a new branch from main**
 
-## 🏷️ Required: .meta.json
+```git checkout -b feat/<template-name>```
 
-Every template MUST include:
+4. **Open ``authors.json`` and add yourself as an author**
 
 ```bash
-{
-  "id": "unique-template-id", (search for the name you want to use on quicksi-cli.dev/check-name)
-  "name": "template-name",
-  "description": "Describe what the template does",
-  "tags": [],
-  "author": {
-    "name": "Your Name",
-    "github_username": "your-username",
-    "avatar": "url to your avatar or github avatar"
-  }
+
+"<your-github-name>": {
+  "name": "<your-fullname/identity-name>",
+  "github_username": "<github-name>",
+  "avatar": "<your-github-avatar-url>",
+  "role": "<your-role>"
 }
-
 ```
 
-tags helps people find and search your project
-author helps people see who created it
+5. **Add your template**
 
-## Optional
+Go to the `templates/` folder and create your template using the correct structure:
 
-```.template.json```
+```templates/<language>/<framework>/<template-name>/```
 
-Used for:
-- post install message
-- setup instructions
-
-
----
-
-## 🚫 Rules
-
-- Template MUST run without modification
-- No TODO comments
-- No placeholder code
-- Must include dependencies (package.json if needed)
-- Must not include secrets
-- ID must be unique across all templates
-- ID must be kebab-case
-- No spaces in ID
-- Template must be installable without manual fixes
-
----
-
-## 📂 Folder Placement
+### 📂 Folder Placement Structure
 
 Place your template inside:
 
 ```bash
 templates/<language>/<framework>/<template-name>/
 ```
+
+You can create a folder that best fit the category of your templates.
 
 Example:
 
@@ -101,22 +118,88 @@ or
 templates/php/laravel/auth-jwt/
 ```
 
----
 
-## 🧪 Testing
+### 🧱 Template Structure
+
+Each template MUST follow this structure:
+
+```bash
+my-template/
+├── .meta.json
+├── .template.json (optional)[for env and installation requirements]
+├── package.json (if applicable)
+└── source files...
+```
+
+### 🏷️ Required: .meta.json
+
+Every template MUST include:
+
+```bash
+{
+  "id": "unique-template-id", (search for the name you want to use on quicksi-cli.dev/check-name)
+  "name": "template-name",
+  "description": "Describe what the template does",
+  "features": [], (enter the features of the templates)
+  "tags": [], (enter searchable words that will make your template findable)
+  "author_id": "<github_username>",
+  "programming_lang": "<what is the programming language",
+  "resource_type": "<what is the resource type, is it a starter, tutorial>"
+}
+
+```
+
+### id
+ID must be unique. To make sure your ID has not already been used, please check here on [Quicksi](https://quicksi.io/id-checker) or https://quicksi.io/id-checker
+ID must be kebab-case and no spaces. e.g python-django-starter
+
+### Tags 
+Tags helps developers find and search your project.
+
+### Author
+Author helps people identify who created a template. Attach your unique github_username, same one used in author.
+
+### Optional
+
+```.template.json```
+
+Used for:
+- post install message
+- setup instructions
+
+
+### 🚫 Rules
+
+Your template must meet the following requirements:
+
+- ✅ Template MUST run without any modification after generation  
+- ❌ No TODO comments or unfinished code  
+- ❌ No placeholder or dummy code  
+- ✅ Must include required dependencies (`package.json` if applicable)  
+- ❌ Must NOT include secrets (e.g. `.env`, API keys, credentials)  
+- ✅ Template ID must be unique across all templates  
+- ✅ Template must be installable and runnable without manual fixes  
+- ❌ Do NOT include heavy assets (images, videos, audio, large documents) — use external links instead  
+- ❌ Do NOT include generated or unnecessary files such as:
+  - `node_modules/`
+  - `dist/`
+  - `build/`
+
+
+### 🧪 Testing
 
 Before submitting:
 
 Make sure the template:
-- it runs
-- installs dependencies if there are dependecies
-- no errors
+- Runs without errors
+- Installs dependencies (if required)
+- Works out-of-the-box
 
 ---
 
-## 🔁 Versioning
+### 🔁 Versioning
 
-Templates are versioned via Git tags by the maintainer:
+Templates are versioned via Git tags by the maintainers:
 
 v1.0.0
 v1.1.0
@@ -125,12 +208,20 @@ v2.0.0
 So you don't have to do anything about the versioning.
 ---
 
-## 📥 Submitting
+6. **Push and Create a Pull Request**
 
-1. Fork repo
-2. Add your template and the required json properties
-3. Commit
-4. Create PR
+Sample commit message:
+
+This version:
+- fixes grammar  
+- adds missing steps (test, commit, push, PR)  
+- improves clarity  
+- keeps your original structure  
+
+Sample PR title:
+feat(template): add react-vite starter
+fix(template): update nextjs dependencies
+docs(template): improve tutorial README
 
 
 That's it, very simple
