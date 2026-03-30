@@ -25,16 +25,23 @@ jobs:
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
 
+      # Save artifact temporarily
+      - name: Save generated file
+        run: |
+          mkdir tmp
+          cp template-index.json tmp/template-index.json
+
       # ✅ Step 3: Switch to main branch
       - name: Switch to main
         run: |
           git fetch origin main
           git checkout main
 
-      # ✅ Step 4: Copy generated file into main
-      - name: Copy generated file
+        # Restore generated file
+      - name: Restore generated file
         run: |
-          cp template-index.json template-index.json
+          git fetch origin main
+          cp tmp/template-index.json template-index.json
 
       # ✅ Step 5: Commit + push
       - name: Commit generated index
