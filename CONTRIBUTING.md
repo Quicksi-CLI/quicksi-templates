@@ -48,9 +48,9 @@ A template is a reusable code starter that can be reused by other developers. Te
 
 ## 🧭 Step-by-step Guide
 
-1. **Fork the repository**
+### 1. Fork the repository
 
-2. **Clone your fork**
+### 2. Clone your fork
 
 ```bash
 git clone https://github.com/<your-username>/quicksi-templates
@@ -58,11 +58,11 @@ cd quicksi-templates
 
 ```
 
-3. **Checkout to a new branch from main**
+### 3. Checkout to a new branch from main
 
 ```git checkout -b feat/<template-name>```
 
-4. **Open ``authors.json`` and add yourself as an author**
+### 4. Open ``authors.json`` and add yourself as an author
 
 ```bash
 
@@ -74,13 +74,14 @@ cd quicksi-templates
 }
 ```
 
-5. **Add your template**
+### 5. Add your template
 
 Go to the `templates/` folder and create your template using the correct structure:
 
 ```templates/<language>/<framework>/<template-name>/```
 
-### 📂 Folder Placement Structure
+--
+**Folder Placement Structure**
 
 Place your template inside:
 
@@ -114,8 +115,9 @@ or
 templates/php/laravel/auth-jwt/
 ```
 
+--
 
-### 🧱 Template Structure
+**Template Structure**
 
 Each template MUST follow this structure:
 
@@ -124,10 +126,10 @@ my-template/
 ├── .meta.json
 ├── .template.json (optional)[for env and installation requirements]
 ├── package.json (if applicable)
-└── source files...
+└── <source files...>
 ```
 
-### 🏷️ Required: .meta.json
+**Required: .meta.json**
 
 Every template MUST include:
 
@@ -145,17 +147,17 @@ Every template MUST include:
 
 ```
 
-### id
+**id**
 ID must be unique. To make sure your ID has not already been used, please check here on [Quicksi](https://quicksi.io/id-checker) or https://quicksi.io/id-checker
 ID must be kebab-case and no spaces. e.g python-django-starter
 
-### Tags 
+**Tags** 
 Tags helps developers find and search your project.
 
-### Author
+**Author**
 Author helps people identify who created a template. Attach your unique github_username, same one used in author.
 
-### Optional
+**Optional**
 
 ```.template.json```
 
@@ -164,7 +166,7 @@ Used for:
 - setup instructions
 
 
-### 🚫 Rules
+**Rules**
 
 Your template must meet the following requirements:
 
@@ -182,7 +184,7 @@ Your template must meet the following requirements:
   - `build/`
 
 
-### 🧪 Testing
+**Testing**
 
 Before submitting:
 
@@ -193,31 +195,25 @@ Make sure the template:
 
 ---
 
-### 🔁 Versioning
-
-Templates are versioned via Git tags by the maintainers:
-
-v1.0.0
-v1.1.0
-v2.0.0
-
-So you don't have to do anything about the versioning.
----
-
-6. **Push and Create a Pull Request**
+### 6. Push and Create a Pull Request
 
 Sample commit message:
 
+```bash
 This version:
 - fixes grammar  
 - adds missing steps (test, commit, push, PR)  
 - improves clarity  
 - keeps your original structure  
+```
 
-Sample PR title:
+**Sample PR title:**
+
+``` bash
 feat(template): add react-vite starter
 fix(template): update nextjs dependencies
 docs(template): improve tutorial README
+```
 
 
 That's it, very simple
