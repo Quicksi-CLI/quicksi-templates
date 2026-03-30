@@ -1,4 +1,8 @@
-# 🚀 Quicksi Templates
+<p align="center">
+  <a href="https://quicksi.io/" title="Quicksi Templates 🚀">
+    <img src="documentation/images/quicksi-logo.png" alt="Project Quicksi Logo" width="244" />
+  </a>
+</p>
 
 A curated collection of reusable starter templates across different languages, frameworks, and environments, designed to accelerate development using the Quicksi CLI.
 
@@ -51,19 +55,10 @@ Download the latest release here:
 
 Quicksi is built by developers, for developers.
 
-We welcome contributions of all kinds:
-- new templates or starter
-- new tools
-- useful setup
-- even a single line of code
-- improvements to existing templates
-- bug fixes and optimizations
-- a template that you want to keep reusing like an auth template, payment template etc
-- an update on the main CLI [Quicksi](https://github.com/Quicksi-CLI/quicksiCLI)
+We welcome contributions of all kinds. See what you can contribut in the [CONTRIBUTING] document.
 
-Please give this repo a star and share with the community 
+Please give this repo a star and share with the community.
 
-See the [CONTRIBUTING] document.
 Thank you, [contributors]!
 
 [CONTRIBUTING]: CONTRIBUTING.md
@@ -81,21 +76,16 @@ This allows:
 
 All templates in this repository are open-source under the MIT License.
 
-## 👤 Creator
+## 👤 Contributors
 
-Quicksi is created and maintained by 
-[Anayo S. Oleru](https://github.com/AnayoOleru)
+Quicksi is created and maintained by: 
 
+- [Anayo S. Oleru](https://github.com/AnayoOleru)
+
+
+Updates:
 To get updates on new releases every week, please follow me on:
-[X](https://x.com/anayooleru)
-
-
-## 💡 Vision
-
-Quicksi aims to become the go-to developer toolkit for:
-- Rapid project setup
-- Learning through real-world templates
-- Standardizing best practices across projects
-- tutorial examples for students to quickly grasp
+- [X](https://x.com/anayooleru)
+- [Linkedin](https://www.linkedin.com/in/anayooleru/)
 
 Build faster. Build smarter.

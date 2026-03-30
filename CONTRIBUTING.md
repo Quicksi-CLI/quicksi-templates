@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="https://quicksi.io/" title="Contributing to Quicksi Templates 🚀">
-    <img src="documentation/images/quicksi-logo.png" alt="Project Quicksi Logo" width="244" />
-  </a>
-</p>
+# Contributing
 
 Thank you for contributing to Quicksi Templates!
 
