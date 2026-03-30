@@ -1,6 +1,6 @@
-<p align="center">
+<p align="left">
   <a href="https://quicksi.io/" title="Quicksi Templates 🚀">
-    <img src="documentation/images/quicksi-logo.png" alt="Project Quicksi Logo" width="244" />
+    <img src="documentation/images/quicksi-logo.png" alt="Project Quicksi Logo" width="400" />
   </a>
 </p>
 
