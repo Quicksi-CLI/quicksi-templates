@@ -54,7 +54,6 @@ A template is a reusable code starter that can be reused by other developers. Te
 
 ```bash
 git clone https://github.com/<your-username>/quicksi-templates
-cd quicksi-templates
 
 ```
 
@@ -135,7 +134,7 @@ Every template MUST include:
 
 ```bash
 {
-  "id": "unique-template-id", (search for the name you want to use on quicksi-cli.dev/check-name)
+  "id": "unique-template-id", (search for the name you want to use on https://quicksi.io/id-checker)
   "name": "template-name",
   "description": "Describe what the template does",
   "features": [], (enter the features of the templates)
