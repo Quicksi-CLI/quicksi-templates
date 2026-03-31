@@ -5,7 +5,19 @@ const TEMPLATES_DIR = path.join(__dirname, "../templates");
 const OUTPUT_INDEX = path.join(__dirname, "../template-index.json");
 const OUTPUT_AUTHORS = path.join(__dirname, "../authors.json");
 
-const VERSION = process.env.VERSION || process.env.GITHUB_REF_NAME || "latest";
+function getVersion() {
+  const versionFilePath = path.join(__dirname, "../VERSION");
+
+  if (fs.existsSync(versionFilePath)) {
+    return fs.readFileSync(versionFilePath, "utf-8").trim();
+  }
+
+  // fallback only if file is missing
+  return process.env.VERSION || process.env.GITHUB_REF_NAME || "latest";
+}
+
+const VERSION = getVersion();
+
 const REPO_URL = "https://github.com/Quicksi-CLI/quicksi-templates";
 
 /**
