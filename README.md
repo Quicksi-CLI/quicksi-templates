@@ -49,7 +49,7 @@ quicksi auth-node@v1.0.0 my-app
 
 ### Latest stable version
 Download the latest release here:
-👉 [https://github.com/Quicksi-CLI/quicksi-templates/releases/latest](https://github.com/Quicksi-CLI/quicksi-templates/releases/latest)
+👉 [https://quicksi.io/documentation](https://quicksi.io/documentation)
 
 ## 🤝 Contributing
 
