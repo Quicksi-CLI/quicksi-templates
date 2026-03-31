@@ -5,7 +5,7 @@ const TEMPLATES_DIR = path.join(__dirname, "../templates");
 const OUTPUT_INDEX = path.join(__dirname, "../template-index.json");
 const OUTPUT_AUTHORS = path.join(__dirname, "../authors.json");
 
-const VERSION = process.env.GITHUB_REF_NAME || "latest";
+const VERSION = process.env.VERSION || process.env.GITHUB_REF_NAME || "latest";
 const REPO_URL = "https://github.com/Quicksi-CLI/quicksi-templates";
 
 /**
