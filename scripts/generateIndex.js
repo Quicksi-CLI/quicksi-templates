@@ -5,6 +5,11 @@ const TEMPLATES_DIR = path.join(__dirname, "../templates");
 const OUTPUT_INDEX = path.join(__dirname, "../template-index.json");
 const OUTPUT_AUTHORS = path.join(__dirname, "../authors.json");
 
+const REPO_URL = "https://github.com/Quicksi-CLI/quicksi-templates";
+
+/**
+ * 🔥 Get version (source of truth)
+ */
 function getVersion() {
   const versionFilePath = path.join(__dirname, "../VERSION");
 
@@ -12,13 +17,10 @@ function getVersion() {
     return fs.readFileSync(versionFilePath, "utf-8").trim();
   }
 
-  // fallback only if file is missing
   return process.env.VERSION || process.env.GITHUB_REF_NAME || "latest";
 }
 
 const VERSION = getVersion();
-
-const REPO_URL = "https://github.com/Quicksi-CLI/quicksi-templates";
 
 /**
  * Normalize version
@@ -96,60 +98,11 @@ function buildTree(dir) {
 }
 
 /**
- * Find existing template
- */
-function findExistingTemplate(existingIndex, id) {
-  for (const version of Object.values(existingIndex.versions || {})) {
-    const found = version.templates.find((t) => t.id === id);
-    if (found) return found;
-  }
-  return null;
-}
-
-/**
- * Build version count map
- */
-function buildVersionCountMap(existingIndex) {
-  const map = {};
-
-  for (const version of Object.values(existingIndex.versions || {})) {
-    for (const template of version.templates || []) {
-      if (!map[template.id]) {
-        map[template.id] = 0;
-      }
-      map[template.id]++;
-    }
-  }
-
-  return map;
-}
-
-/**
  * Normalize to array
  */
 function normalize(value) {
   if (!value) return [];
   return Array.isArray(value) ? value : [value];
-}
-
-/**
- * Sort versions (latest first)
- */
-function sortVersions(versionsObj) {
-  return Object.fromEntries(
-    Object.entries(versionsObj).sort((a, b) => {
-      const aParts = a[0].replace("v", "").split(".").map(Number);
-      const bParts = b[0].replace("v", "").split(".").map(Number);
-
-      for (let i = 0; i < 3; i++) {
-        if (aParts[i] !== bParts[i]) {
-          return bParts[i] - aParts[i];
-        }
-      }
-
-      return 0;
-    })
-  );
 }
 
 /**
@@ -159,13 +112,10 @@ function run() {
   const now = new Date().toISOString();
   const normalizedVersion = normalizeVersion(VERSION);
 
-  const existingIndex = loadJSON(OUTPUT_INDEX, { versions: {} });
-
   // 🔥 LOAD AUTHORS (SOURCE OF TRUTH)
   const authorsData = loadJSON(OUTPUT_AUTHORS, { authors: {} });
   const authorsMap = authorsData.authors || {};
 
-  const templateVersionCount = buildVersionCountMap(existingIndex);
   const templateFolders = getAllTemplates(TEMPLATES_DIR);
 
   const templates = [];
@@ -186,7 +136,7 @@ function run() {
 
       idSet.add(meta.id);
 
-      // ✅ VALIDATE AUTHOR_ID
+      // ✅ VALIDATE AUTHOR
       if (!meta.author_id) {
         throw new Error(`Missing "author_id" in ${meta.id}`);
       }
@@ -199,13 +149,12 @@ function run() {
         );
       }
 
-      // 🔥 CLEAN AUTHOR OBJECT (DENORMALIZED OUTPUT)
       const author = {
         name: baseAuthor.name,
         github_username: baseAuthor.github_username,
         avatar:
           baseAuthor.avatar ||
-          `https://res.cloudinary.com/dvfr0z8wr/image/upload/v1774187729/Quicksi/pattern_brick-wall-2_1_2_0-0_0_1__hsla_240_7_18_1.00__hsla_47_81_61_1.00__hsla_4_90_58_1.00.png`,
+          `https://res.cloudinary.com/dvfr0z8wr/image/upload/v1774187729/Quicksi/pattern_brick-wall.png`,
         role: baseAuthor.role || null,
       };
 
@@ -213,16 +162,6 @@ function run() {
         TEMPLATES_DIR + path.sep,
         ""
       );
-
-      const existingTemplate = findExistingTemplate(
-        existingIndex,
-        meta.id
-      );
-
-      const date_created = existingTemplate?.date_created || now;
-
-      const version_count =
-        (templateVersionCount[meta.id] || 0) + 1;
 
       const tree = buildTree(folder);
 
@@ -236,9 +175,9 @@ function run() {
         path: relativePath,
         github_url: getGitHubUrl(relativePath),
         version: normalizedVersion,
-        date_created,
-        version_count,
-        author, // ✅ FULL AUTHOR ATTACHED
+        date_created: now,
+        version_count: 1, // 🔥 fresh version only
+        author,
         tree,
       });
 
@@ -249,20 +188,19 @@ function run() {
     }
   }
 
-  // 🔥 SAVE VERSION
-  existingIndex.versions = {
-    ...(existingIndex.versions || {}),
-    [normalizedVersion]: {
-      generatedAt: now,
-      templates,
+  // 🔥 ONLY OUTPUT CURRENT VERSION (NO MERGE HERE)
+  const output = {
+    versions: {
+      [normalizedVersion]: {
+        generatedAt: now,
+        templates,
+      },
     },
   };
 
-  existingIndex.versions = sortVersions(existingIndex.versions);
-
   fs.writeFileSync(
     OUTPUT_INDEX,
-    JSON.stringify(existingIndex, null, 2)
+    JSON.stringify(output, null, 2)
   );
 
   console.log(`✅ Generated version ${normalizedVersion}`);

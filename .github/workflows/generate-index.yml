@@ -2,8 +2,6 @@ name: Generate Template Index
 
 on:
   push:
-    branches:
-      - main
     tags:
       - "v*"
 
@@ -12,58 +10,45 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ Step 1: Checkout repo
-      - name: Checkout repository
+      # ✅ Step 1: Checkout TAG (source of truth)
+      - name: Checkout tag
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # important for tags + branch switching
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # ✅ Step 2: Generate index based on context
-      - name: Generate index (tag)
-        if: startsWith(github.ref, 'refs/tags/')
+      # ✅ Step 2: Generate version data from tag
+      - name: Generate index (from tag)
         run: node scripts/generateIndex.js
         env:
-          GITHUB_REF_NAME: ${{ github.ref_name }}
+          VERSION: ${{ github.ref_name }}
 
-      - name: Generate index (main -> latest)
-        if: github.ref == 'refs/heads/main'
-        run: node scripts/generateIndex.js
-        env:
-          GITHUB_REF_NAME: latest
-
-      # ✅ Step 3: Save generated file
-      - name: Save generated file
+      # Save generated file
+      - name: Save generated version
         run: |
-          mkdir -p tmp
+          mkdir tmp
           cp template-index.json tmp/template-index.json
 
-      # ✅ Step 4: Switch to main safely
-      - name: Switch to main
-        run: |
-          git stash
-          git fetch origin main
-          git checkout main
-          git pull origin main
-          git stash pop || true
+      # ✅ Step 3: Checkout main (target state)
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
 
-      # ✅ Step 5: Restore generated file
-      - name: Restore generated file
-        run: |
-          cp tmp/template-index.json template-index.json
+      # ✅ Step 4: Merge version into existing index
+      - name: Merge version into main index
+        run: node scripts/mergeIndex.js
 
-      # ✅ Step 6: Commit + push (only if changed)
-      - name: Commit generated index
+      # ✅ Step 5: Commit
+      - name: Commit updated index
         run: |
           git config user.name "quicksi-bot"
           git config user.email "bot@quicksi.dev"
 
           git add template-index.json
 
-          git diff --cached --quiet || git commit -m "chore: update index for ${{ github.ref_name || 'main' }}"
+          git diff --cached --quiet || git commit -m "chore: add version ${{ github.ref_name }}"
 
           git push origin main

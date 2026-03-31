@@ -1,10 +1,16 @@
 {
-  "authors": {
-    "anayooleru": {
-      "name": "Anayo S. Oleru",
-      "github_username": "anayooleru",
-      "avatar": "https://avatars.githubusercontent.com/u/37017788?v=4",
-      "role": "Software Engineer"
+    "authors": {
+        "anayooleru": {
+            "name": "Anayo S. Oleru",
+            "github_username": "anayooleru",
+            "avatar": "https://avatars.githubusercontent.com/u/37017788?v=4",
+            "role": "Software Engineer"
+        },
+        "alphaolomi": {
+            "name": "Alpha Olomi",
+            "github_username": "alphaolomi",
+            "avatar": "https://avatars.githubusercontent.com/u/10551599?v=4",
+            "role": "Frontend Developer"
+        }
     }
-  }
 }
