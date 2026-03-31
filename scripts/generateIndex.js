@@ -14,7 +14,7 @@ function getVersion() {
 
   // fallback only if file is missing
   return process.env.VERSION || process.env.GITHUB_REF_NAME || "latest";
-}
+};
 
 const VERSION = getVersion();
 
