@@ -19,29 +19,37 @@ jobs:
         with:
           node-version: 20
 
-      # ✅ Step 2: Generate version data from tag
+      # ✅ Step 2: Generate index from tag
       - name: Generate index (from tag)
         run: node scripts/generateIndex.js
         env:
           VERSION: ${{ github.ref_name }}
 
-      # Save generated file
+      # ✅ Step 3: Upload generated version as artifact
       - name: Save generated version
-        run: |
-          mkdir tmp
-          cp template-index.json tmp/template-index.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-index
+          path: template-index.json
 
-      # ✅ Step 3: Checkout main (target state)
+      # ✅ Step 4: Checkout main branch (target history)
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
           ref: main
 
-      # ✅ Step 4: Merge version into existing index
+      # ✅ Step 5: Download generated version
+      - name: Restore generated version
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-index
+          path: tmp
+
+      # ✅ Step 6: Merge version into existing index
       - name: Merge version into main index
         run: node scripts/mergeIndex.js
 
-      # ✅ Step 5: Commit
+      # ✅ Step 7: Commit + push (only if changed)
       - name: Commit updated index
         run: |
           git config user.name "quicksi-bot"
