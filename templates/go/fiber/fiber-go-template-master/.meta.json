@@ -1,0 +1,21 @@
+{
+  "id": "fiber-go-template-master",
+  "name": "fiber go template",
+  "description": "An Express.js inspired web framework build on top of Fasthttp, the fastest HTTP engine for Go. Designed to ease things up for fast development with **zero memory allocation and performance** in mind.",
+  "features": [
+    "Fiber is an Express.js inspired web framework build on top of Fasthttp, the fastest HTTP engine for Go.",
+    "Designed to ease things up for fast development with zero memory allocation and performance in mind.",
+    "The framework has a robust set of features including routing, middleware support, template engines, and more.",
+    "Fiber is ideal for building high-performance web applications and APIs in Go."
+  ],
+  "tags": [
+    "Go",
+    "Web Framework",
+    "Fiber",
+    "Fasthttp",
+    "API Development"
+  ],
+  "author_id": "leyksnal",
+  "programming_lang": "Go",
+  "resource_type": "starter"
+}
