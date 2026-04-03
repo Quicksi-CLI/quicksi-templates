@@ -1,0 +1,15 @@
+{
+  "id": "nodejs-socket-server",
+  "name": "Node.js Socket Server Template",
+  "description": "A template for creating a socket server using Node.js and the Socket.IO library.",
+  "features": [ 
+    "Real-time communication with clients using WebSockets",
+    "Easy integration with Socket.IO for handling socket events",
+    "Basic server setup with Express.js",
+    "Scalable architecture for handling multiple clients"
+  ],
+  "tags": [ "nodejs", "socket.io", "server", "template" ], 
+  "author_id": "teezyfortune", 
+  "programming_lang": "javascript",
+  "resource_type": "starter"
+}
